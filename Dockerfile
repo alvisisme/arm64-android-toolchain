@@ -7,8 +7,8 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y install unzip wg
 
 ENV ANDROID_NDK_VERSION r13b
 
-RUN wget https://dl.google.com/android/repository/android-ndk-${ANDROID_NDK_VERSION}-linux-x86_64.zip && \
-    unzip android-ndk-${ANDROID_NDK_VERSION}-linux-x86_64.zip && \
+RUN wget -q https://dl.google.com/android/repository/android-ndk-${ANDROID_NDK_VERSION}-linux-x86_64.zip && \
+    unzip -qq android-ndk-${ANDROID_NDK_VERSION}-linux-x86_64.zip && \
     /bin/bash android-ndk-${ANDROID_NDK_VERSION}/build/tools/make-standalone-toolchain.sh --arch=arm64 \
     --platform=android-21 --toolchain=aarch64-linux-android-4.9 --stl=libc++ --install-dir=/opt/arm64-android-toolchain && \
     rm -rf android-ndk-${ANDROID_NDK_VERSION}-linux-x86_64.zip && \
